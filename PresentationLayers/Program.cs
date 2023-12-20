@@ -1,8 +1,13 @@
+using AutoMapper;
+using BusinessLogicLayer.Interfaces;
+using BusinessLogicLayer.Services;
 using DataAccesLayer.Datas;
 using DataAccesLayer.Interfaces;
 using DataAccesLayer.Repositories;
+using DTO;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +20,15 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options
              => options.UseSqlServer(builder.Configuration.GetConnectionString("LocalSqlServer")));
+// Add AutoMepper
+
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new AutoMepperProfile());
+});
+
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 
 builder.Services.AddTransient<IAdsElonInterface, AdsElonRepository>();
@@ -33,6 +47,8 @@ builder.Services.AddTransient<IUserInterface, UserRepository>();
 builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
+// Add Services
+builder.Services.AddTransient<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 

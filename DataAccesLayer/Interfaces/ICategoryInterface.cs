@@ -6,5 +6,5 @@ namespace DataAccesLayer.Interfaces;
 
 public interface ICategoryInterface:IRepository<Category>
 {
-
+    Task<IEnumerable<Category>> GetAllWithCategoriesAsync(); 
 }

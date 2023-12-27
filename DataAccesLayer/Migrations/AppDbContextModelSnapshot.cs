@@ -400,7 +400,8 @@ namespace DataAccesLayer.Migrations
                 {
                     b.HasOne("DataAccesLayer.Models.Category", "Category")
                         .WithMany("SubCategories")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Category");
                 });

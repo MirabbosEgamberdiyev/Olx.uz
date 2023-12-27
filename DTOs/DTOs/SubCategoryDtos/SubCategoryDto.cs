@@ -4,11 +4,10 @@ using DataAccesLayer.Models;
 
 namespace DTO.DTOs.SubCategoryDtos;
 
-public partial class SubCategoryDto:BaseDto
+public  class SubCategoryDto:BaseDto
 {
-    public int? CategoryId { get; set; }
+    public int CategoryId { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
-    public ICollection<AdsElon> AdsElons { get; set; } = new List<AdsElon>();
 }

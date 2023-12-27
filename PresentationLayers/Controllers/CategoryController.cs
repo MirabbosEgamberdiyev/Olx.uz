@@ -3,6 +3,7 @@ using BusinessLogicLayer.Interfaces;
 using DTO.DTOs.CategoryDtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace PresentationLayers.Controllers;
 
@@ -21,7 +22,12 @@ public class CategoryController(ICategoryService categoryService) : ControllerBa
         try
         {
             var categories = await _categoryService.GetAllAsync();
-            return Ok(categories);
+            var json = JsonConvert.SerializeObject(categories, Formatting.Indented,
+                new JsonSerializerSettings()
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+               });
+            return Ok(json);
         }
         catch (Exception ex)
         {

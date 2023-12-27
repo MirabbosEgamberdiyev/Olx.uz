@@ -7,16 +7,10 @@ using DTO.DTOs.SubCategoryDtos;
 
 namespace BusinessLogicLayer.Services;
 
-public class SubCategoryService : ISubCategoryService
+public class SubCategoryService(IUnitOfWork unitOfWork, IMapper mapper) : ISubCategoryService
 {
-    private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
-
-    public SubCategoryService(IUnitOfWork unitOfWork, IMapper mapper)
-    {
-        _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-    }
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly IMapper _mapper = mapper;
 
     public async Task AddAsync(AddSubCategoryDto subCategoryDto)
     {
@@ -36,7 +30,14 @@ public class SubCategoryService : ISubCategoryService
         {
             throw new CustomException($"{subCategory.Name} is already exist!");
         }
+        var categories  =   await _unitOfWork.CategoryInterface.GetAllAsync();
+        var categoryIdIsValid =categories.Any(c => c.Id == subCategoryDto.CategoryId);
 
+        if (!categoryIdIsValid)
+        {
+            throw new ArgumentException("CategoryID is null here");
+        }
+       
         await _unitOfWork.SubCategoryInterface.AddAsync(subCategory);
         await _unitOfWork.SaveAsync();
     }
@@ -103,7 +104,13 @@ public class SubCategoryService : ISubCategoryService
         {
             throw new CustomException("SubCategory is already exist ");
         }
+        var categories = await _unitOfWork.CategoryInterface.GetAllAsync();
+        var categoryIdIsValid = categories.Any(c => c.Id == subCategoryDto.CategoryId);
 
+        if (!categoryIdIsValid)
+        {
+            throw new ArgumentException("CategoryID is null here");
+        }
         await _unitOfWork.SubCategoryInterface.UpdateAsync(updateSubCategory);
         await _unitOfWork.SaveAsync();
     }

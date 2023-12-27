@@ -44,11 +44,11 @@ builder.Services.AddTransient<ISubCategoryInterface, SubCategoryRepository>();
 builder.Services.AddTransient<ISubRegionInterface, SubRegionRepository>();
 
 builder.Services.AddTransient<IUserInterface, UserRepository>();
-builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 // Add Services
 builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<ISubCategoryService, SubCategoryService>();
 
 var app = builder.Build();
 

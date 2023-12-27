@@ -50,7 +50,7 @@ public class CategoryService(IUnitOfWork unitOfWork,
 
     public async Task<List<CategoryDto>> GetAllAsync()
     {
-        var categories = await _unitOfWork.CategoryInterface.GetAllAsync();
+        var categories = await _unitOfWork.CategoryInterface.GetAllWithCategoriesAsync();
 
         return categories.Select(c => _mapper.Map<CategoryDto>(c)).ToList();
     }

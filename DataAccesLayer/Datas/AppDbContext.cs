@@ -33,10 +33,12 @@ namespace DataAccesLayer.Datas
 
         private void ConfigureCategory(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<SubCategory>()
-                .HasOne(sc => sc.Category)
-                .WithMany(c => c.SubCategories)
-                .HasForeignKey(sc => sc.CategoryId);
+            modelBuilder.Entity<Category>()
+                        .HasMany(c => c.SubCategories)
+                        .WithOne(c => c.Category)
+                        .HasForeignKey(c => c.CategoryId)
+                        .OnDelete(DeleteBehavior.Cascade);
+
         }
 
         private void ConfigureAdsElon(ModelBuilder modelBuilder)

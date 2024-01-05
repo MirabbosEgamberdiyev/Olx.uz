@@ -3,7 +3,9 @@
 using DataAccesLayer.Datas;
 using DataAccesLayer.Interfaces;
 using DataAccesLayer.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace DataAccesLayer.Repositories;
 

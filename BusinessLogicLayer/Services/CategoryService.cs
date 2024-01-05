@@ -36,6 +36,7 @@ public class CategoryService(IUnitOfWork unitOfWork,
         await _unitOfWork.CategoryInterface.AddAsync(category);
         await _unitOfWork.SaveAsync();
 
+
     }
     public async Task Delete(int id)
     {
@@ -51,6 +52,7 @@ public class CategoryService(IUnitOfWork unitOfWork,
     public async Task<List<CategoryDto>> GetAllAsync()
     {
         var categories = await _unitOfWork.CategoryInterface.GetAllWithCategoriesAsync();
+
 
         return categories.Select(c => _mapper.Map<CategoryDto>(c)).ToList();
     }

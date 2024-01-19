@@ -72,14 +72,6 @@ builder.Services.AddCors(options =>
 
 #region DI Services
 
-builder.Services.AddTransient<IAdsElonInterface, AdsElonRepository>();
-builder.Services.AddTransient<ICategoryInterface, CategoryRepository>();
-builder.Services.AddTransient<IChatInterface, ChatRepository>();
-builder.Services.AddTransient<IImageInterface, ImageRepository>();
-builder.Services.AddTransient<IMessageInterface, MessageRepository>();
-builder.Services.AddTransient<IRegionInterface, RegionRepository>();
-builder.Services.AddTransient<ISubCategoryInterface, SubCategoryRepository>();
-builder.Services.AddTransient<ISubRegionInterface, SubRegionRepository>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddTransient<ICategoryService, CategoryService>();

@@ -10,7 +10,6 @@ public interface ICategoryService
     Task<List<CategoryDto>> GetAllAsync();
     Task<CategoryDto> GetByIdAsync(int id);
     Task AddAsync(AddCategoryDto categoryDto);
-
     Task Delete(int id);
     Task Update(UpdateCategoryDto categoryDto);
 

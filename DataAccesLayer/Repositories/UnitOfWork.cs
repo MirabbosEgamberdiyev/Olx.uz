@@ -5,35 +5,25 @@ using DataAccesLayer.Interfaces;
 
 namespace DataAccesLayer.Repositories;
 
-public class UnitOfWork(AppDbContext dbContext,
-                        IAdsElonInterface adsElonInterface,
-                        ICategoryInterface categoryInterface,
-                        IChatInterface chatInterface,
-                        IImageInterface imageInterface,
-                        IMessageInterface messageInterface,
-                        IRegionInterface regionInterface,
-                        ISubCategoryInterface subCategoryInterface,
-                        ISubRegionInterface subRegionInterface
-                                       ) : IUnitOfWork
+public class UnitOfWork(AppDbContext dbContext) : IUnitOfWork
 {
     private readonly AppDbContext _dbContext = dbContext;
 
-    public IAdsElonInterface AdsElonInterface { get; } = adsElonInterface;
+    public IAdsElonInterface AdsElonInterface => new AdsElonRepository(_dbContext);
 
-    public ICategoryInterface CategoryInterface { get; } = categoryInterface;
+    public ICategoryInterface CategoryInterface => new CategoryRepository(_dbContext);
 
-    public IChatInterface ChatInterface { get; } = chatInterface;
+    public IChatInterface ChatInterface => new ChatRepository(_dbContext);
 
-    public IImageInterface ImageInterface { get; } = imageInterface;
+    public IImageInterface ImageInterface => new ImageRepository(_dbContext);
 
-    public IMessageInterface MessageInterface { get; } = messageInterface;
+    public IMessageInterface MessageInterface => new MessageRepository(_dbContext);
 
-    public IRegionInterface RegionInterface { get; } = regionInterface;
+    public IRegionInterface RegionInterface => new RegionRepository(_dbContext);
 
-    public ISubCategoryInterface SubCategoryInterface { get; } = subCategoryInterface;
+    public ISubCategoryInterface SubCategoryInterface => new SubCategoryRepository(_dbContext);
 
-    public ISubRegionInterface SubRegionInterface { get; } = subRegionInterface;
-
+    public ISubRegionInterface SubRegionInterface => new SubRegionRepository(_dbContext);
 
     public void Dispose()
         => GC.SuppressFinalize(this);

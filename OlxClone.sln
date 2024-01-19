@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer", "Busin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTOs\DTO.csproj", "{16E5D749-B685-4868-8563-B106D15DA2D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayers", "PresentationLayers\PresentationLayers.csproj", "{915DB0D8-7045-4EE7-868C-6E33A297DC8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationLayers", "PresentationLayers\PresentationLayers.csproj", "{915DB0D8-7045-4EE7-868C-6E33A297DC8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OlxClone.Test", "OlxClone.Test\OlxClone.Test.csproj", "{9F3534D4-2B0A-48E1-B520-C37454F7B3A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{915DB0D8-7045-4EE7-868C-6E33A297DC8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{915DB0D8-7045-4EE7-868C-6E33A297DC8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{915DB0D8-7045-4EE7-868C-6E33A297DC8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F3534D4-2B0A-48E1-B520-C37454F7B3A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F3534D4-2B0A-48E1-B520-C37454F7B3A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F3534D4-2B0A-48E1-B520-C37454F7B3A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F3534D4-2B0A-48E1-B520-C37454F7B3A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,8 +13,8 @@ public class UnitOfWork(AppDbContext dbContext,
                         IMessageInterface messageInterface,
                         IRegionInterface regionInterface,
                         ISubCategoryInterface subCategoryInterface,
-                        ISubRegionInterface subRegionInterface,
-                        IUserInterface userInterface                    ) : IUnitOfWork
+                        ISubRegionInterface subRegionInterface
+                                       ) : IUnitOfWork
 {
     private readonly AppDbContext _dbContext = dbContext;
 
@@ -34,7 +34,6 @@ public class UnitOfWork(AppDbContext dbContext,
 
     public ISubRegionInterface SubRegionInterface { get; } = subRegionInterface;
 
-    public IUserInterface UserInterface { get; } = userInterface;
 
     public void Dispose()
         => GC.SuppressFinalize(this);

@@ -1,14 +1,14 @@
 ﻿using BusinessLogicLayer.Extended;
 using BusinessLogicLayer.Interfaces;
-using DTO.DTOs.CategoryDtos;
 using DTO.DTOs.SubCategoryDtos;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayers.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class SubCategoryController(ISubCategoryService subSategoryService) : ControllerBase
 {
     private readonly ISubCategoryService _subSategoryService = subSategoryService;
